@@ -2,6 +2,7 @@ import dataSchema from './model/data.js'
 
 
 
+
 export async function adduser(req,res) {
     console.log(req.body)
     const {...data}= req.body

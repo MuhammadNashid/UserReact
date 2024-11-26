@@ -1,5 +1,5 @@
 import express from "express"
-import Router from "./router.js"
+import Router from "./Router.js"
 import connection from "./connection.js"
 import dotenv from 'dotenv'
 
