@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 const dataSchema = new mongoose.Schema({
-    photo: { type: String},
+    pic: { type: String},
     name:{type:String},
     des:{type:String} 
 });

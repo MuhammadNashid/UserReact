@@ -12,7 +12,8 @@ export async function adduser(req,res) {
 
 export async function getUser(req, res) {
     const data=await dataSchema.find()
-    console.log(data)
+    // console.log(data)
+    res.status(200).send(data)
 }
 
 export async function getdata(req, res) {
@@ -40,14 +41,13 @@ export async function update(req,res) {
     })  
 }
 
-
 export async function deleteUser(req, res) {
     // console.log(req.params); 
-    const { id } = req.params;  
+    const { id } = req.params
     const data = await dataSchema.deleteOne({ _id: id }).then(() => {
-            res.status(201).send({ msg: "Deleted" });
-        })
-        .catch((error) => {
-            res.status(500).send({ error });
-        });
-    }
+        res.status(201).send({ msg: "Deleted" });
+    })
+    .catch((error) => {
+        res.status(500).send({ error });
+    });
+}
