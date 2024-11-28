@@ -13,8 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Index/>}/>
         <Route path="/Add" element={<Add/>}/>
-        <Route path="/Edit" element={<Edit/>}/>
-        <Route path="/Show" element={<Show/>}/>
+        <Route path="/Edit/:id" element={<Edit/>}/>
+        <Route path="/Show/:id" element={<Show/>}/>
       </Routes>
     </BrowserRouter>
       

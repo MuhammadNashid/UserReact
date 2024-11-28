@@ -18,7 +18,7 @@ const Edit = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/getdata/${id}`)
+      const response = await fetch(`http://localhost:4000/api/getdata/${id}`)
       if (!response.ok) {
         throw new Error(`Failed to fetch: ${response.status}`)
       }
@@ -57,7 +57,7 @@ const Edit = () => {
     console.log(val)
     
     try {
-      const response = await fetch(`http://localhost:3001/api/update/${id}`, {
+      const response = await fetch(`http://localhost:4000/api/update/${id}`, {
         method: 'PUT',
         body:JSON.stringify(val),
       })
@@ -78,14 +78,31 @@ const Edit = () => {
     <div className="edit-form-container">
       <form>
         <div>
-          <img src={val.pic} alt="Preview" className="image-preview"/>
+          <img
+            src={val.pic}
+            alt="Preview"
+            className="image-preview"
+          />
         </div>
         <input type="file" onChange={handleImageChange} />
-        <input type="text" name="name" value={val.name} onChange={handleChange} placeholder="Name"/>
-        <input type="text" name="des" value={val.des} onChange={handleChange} placeholder="Description"/>
+        <input
+          type="text"
+          name="name"
+          value={val.name}
+          onChange={handleChange}
+          placeholder="Name"
+        />
+        <input
+          type="text"
+          name="des"
+          value={val.des}
+          onChange={handleChange}
+          placeholder="Description"
+        />
         <button onClick={handleClick} type="submit">Save</button>
       </form>
     </div>
   )
 }
+
 export default Edit

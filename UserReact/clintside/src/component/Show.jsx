@@ -1,10 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Show.css";
-import img from "../assets/img.png";
+import React, { useEffect, useState } from "react"
+import { Link, useParams, useNavigate } from "react-router-dom"
+import "./Show.css"
 
 const Show = () => {
-
   const { id } = useParams()
   const navigate = useNavigate()
   const [employee, setEmployee] = useState(null)
@@ -15,7 +13,7 @@ const Show = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/getdata/${id}`)
+      const response = await fetch(`http://localhost:4000/api/getdata/${id}`)
       if (!response.ok) {
         throw new Error(`Failed to fetch: ${response.status}`)
       }
@@ -25,9 +23,10 @@ const Show = () => {
       setError(err.message)
     }
   }
+
   const deleteEmployee = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/delete/${id}`, {
+      const response = await fetch(`http://localhost:4000/api/delete/${id}`, {
         method: "DELETE",
       })
       if (!response.ok) {
@@ -46,23 +45,26 @@ const Show = () => {
   return (
     <div className="details-container">
       <div className="card">
+        <div className="content">
         <div className="card-image">
-          <img src={img} alt="Employee" />
+          <img src={employee.pic} alt="Employee" />
         </div>
         <div className="card-details">
           <h2>Name: {employee.name}</h2>
           <p>Des: {employee.des}</p>
         </div>
-
+        </div>
         <div className="card-actions">
-          <Link to={`/Edit${id}`}>
+          <Link to={`/Edit/${id}`}>
             <button className="btn-edit">Edit</button>
           </Link>
-          <button className="btn-delete" onClick={deleteEmployee}>Delete</button>
+          <button className="btn-delete" onClick={deleteEmployee}>
+            Delete
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Show
+export default Show;
